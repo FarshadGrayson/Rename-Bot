@@ -1,3 +1,9 @@
+# Made with python3
+# (C) @FayasNoushad
+# Copyright permission under GNU General Public License v3.0
+# All rights reserved by FayasNoushad
+# License -> https://github.com/FayasNoushad/Rename-Bot/blob/main/LICENSE
+
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
