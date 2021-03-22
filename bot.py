@@ -81,7 +81,7 @@ async def start(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@Client.on_message(filters.photo)
+@FayasNoushad.on_message(filters.photo)
 async def save_photo(bot, update):
     if update.media_group_id is not None:
         # album is sent
