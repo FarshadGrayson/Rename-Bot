@@ -1,5 +1,5 @@
 # Made with python3
-# (C) @FayasNoushad
+# (C) @TeleRoidGroup
 # Copyright permission under GNU General Public License v3.0
 # All rights reserved by FayasNoushad
 # License -> https://github.com/FayasNoushad/Rename-Bot/blob/main/LICENSE
@@ -30,7 +30,7 @@ AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
 PROCESS_MAX_TIMEOUT = int(os.environ.get("TIME_LIMIT"))
 ADL_BOT_RQ = {}
 START_TEXT = """
-Hello {} , I'am a simple file or media rename bot with permanent thumbnail support.
+Hello {} , I'am a simple file or media rename bot with permanent thumbnail support💯.
 
 <b><u>Rename</u></b>
 ➠ Send me any telegram file or media.
@@ -45,14 +45,14 @@ Hello {} , I'am a simple file or media rename bot with permanent thumbnail suppo
 <b><u>Show Thumbnail</u></b>
 ➠ Send /showthumb for view current thumbnail.
 
-Made by @FayasNoushad
+Made by @PredatorHackerzZ_bot
 """
 
 if __name__ == "__main__" :
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
 
-FayasNoushad = Client(
+TeleRoidGroup = Client(
     "Rename Bot",
     bot_token=os.environ.get("TG_BOT_TOKEN", ""),
     api_id=int(os.environ.get("APP_ID", 12345)),
@@ -61,7 +61,7 @@ FayasNoushad = Client(
 
 
 
-@FayasNoushad.on_callback_query()
+@PredatorHackerzZ.on_callback_query()
 async def cb_handler(bot, update):
 
     if update.data == "rename":
@@ -71,17 +71,17 @@ async def cb_handler(bot, update):
     if update.data == "cancel":
         await update.message.edit_text(text="<code>Process Cancelled</code>")
 
-@FayasNoushad.on_message(filters.command(["start"]))
+@PredatorHackerzZ.on_message(filters.command(["start"]))
 async def start(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text=START_TEXT.format(update.from_user.mention),
         parse_mode="html", disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Channel ⚙', url='https://telegram.me/FayasNoushad'), InlineKeyboardButton('⚙ Group ⚙', url='https://telegram.me/FayasChat')]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('⭕ Channel ⭕', url='https://telegram.me/TeleRoidGroup'), InlineKeyboardButton('Grou🛑 Support 🛑', url='https://telegram.me/Teleroid14')]]),
         reply_to_message_id=update.message_id
     )
 
-@FayasNoushad.on_message(filters.photo)
+@PredatorHackerzZ.on_message(filters.photo)
 async def save_photo(bot, update):
     if update.media_group_id is not None:
         # album is sent
@@ -108,7 +108,7 @@ async def save_photo(bot, update):
             reply_to_message_id=update.message_id
         )
 
-@FayasNoushad.on_message(filters.command(["delthumb"]))
+@PredatorHackerzZ.on_message(filters.command(["delthumb"]))
 async def delete_thumbnail(bot, update):
     thumb_image_path = DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
     #download_location = DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
@@ -127,7 +127,7 @@ async def delete_thumbnail(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@FayasNoushad.on_message(filters.command(["showthumb"]))
+@TeleRoidGroup.on_message(filters.command(["showthumb"]))
 async def show_thumb(bot, update):
     thumb_image_path = DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
     if not os.path.exists(thumb_image_path):
@@ -155,7 +155,7 @@ async def show_thumb(bot, update):
             reply_to_message_id=update.message_id
         )
 
-@FayasNoushad.on_message(filters.private & (filters.audio | filters.document | filters.animation | filters.video | filters.voice | filters.video_note))
+@TeleRoidGroup.on_message(filters.private & (filters.audio | filters.document | filters.animation | filters.video | filters.voice | filters.video_note))
 async def filter(bot, update):
     if update.from_user.id not in AUTH_USERS:
         if str(update.from_user.id) in ADL_BOT_RQ:
