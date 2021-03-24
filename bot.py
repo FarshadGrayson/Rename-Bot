@@ -45,7 +45,7 @@ Hello {} , I'am a simple file or media rename bot with permanent thumbnail suppo
 <b><u>Show Thumbnail</u></b>
 ➠ Send /showthumb for view current thumbnail.
 
-Made by @PredatorHackerzZ_bot
+Made by @TeleRoid14
 """
 
 if __name__ == "__main__" :
