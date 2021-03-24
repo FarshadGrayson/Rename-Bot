@@ -1,8 +1,8 @@
 # Made with python3
 # (C) @TeleRoidGroup
 # Copyright permission under GNU General Public License v3.0
-# All rights reserved by FayasNoushad
-# License -> https://github.com/FayasNoushad/Rename-Bot/blob/main/LICENSE
+# All rights reserved by @TeleRoidGroup
+# License -> https://github.com/P-Phreak/Rename-Bot/blob/main/LICENSE
 
 import logging
 logging.basicConfig(level=logging.DEBUG,
@@ -61,7 +61,7 @@ TeleRoidGroup = Client(
 
 
 
-@PredatorHackerzZ.on_callback_query()
+@TeleRoidGroup.on_callback_query()
 async def cb_handler(bot, update):
 
     if update.data == "rename":
@@ -71,7 +71,7 @@ async def cb_handler(bot, update):
     if update.data == "cancel":
         await update.message.edit_text(text="<code>Process Cancelled</code>")
 
-@PredatorHackerzZ.on_message(filters.command(["start"]))
+@TeleRoidGroup.on_message(filters.command(["start"]))
 async def start(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
@@ -81,7 +81,7 @@ async def start(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@PredatorHackerzZ.on_message(filters.photo)
+@TeleRoidGroup.on_message(filters.photo)
 async def save_photo(bot, update):
     if update.media_group_id is not None:
         # album is sent
@@ -190,7 +190,7 @@ async def filter(bot, update):
         disable_web_page_preview=True
     )
 
-@FayasNoushad.on_message(filters.private & filters.reply & filters.text)
+@TeleRoidGroup.on_message(filters.private & filters.reply & filters.text)
 async def cus_name(bot, message):
     if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply):
         asyncio.create_task(rename(bot, message))
@@ -265,7 +265,7 @@ async def rename(bot, message):
                     video=new_file_name,
                     thumb=thumb_image_path,
                     caption=description,
-                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')]]),
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('⭕ Join Updates Channel ⭕', url='https://telegram.me/TeleRoidGroup')]]),
                     reply_to_message_id=message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=("<code>Downloaded Successfully! Now I am Uploading to Telegram...</code>", a, c_time)
@@ -286,7 +286,7 @@ async def rename(bot, message):
                     document=new_file_name,
                     thumb=thumb_image_path,
                     caption=description,
-                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')]]),
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🛑 Join Updates Channel 🛑', url='https://telegram.me/TeleRoid14')]]),
                     reply_to_message_id=message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=("<code>Downloaded Successfully! Now I am Uploading to Telegram...</code>", a, c_time)
@@ -305,4 +305,5 @@ async def rename(bot, message):
             await bot.send_message(chat_id=message.chat.id, text="You're not Authorized to do that!", reply_to_message_id=message.message_id)
 
 
-FayasNoushad.run()
+
+TeleRoidGroup.run()
