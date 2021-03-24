@@ -108,7 +108,7 @@ async def save_photo(bot, update):
             reply_to_message_id=update.message_id
         )
 
-@PredatorHackerzZ.on_message(filters.command(["delthumb"]))
+@TeleRoidGroup.on_message(filters.command(["delthumb"]))
 async def delete_thumbnail(bot, update):
     thumb_image_path = DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
     #download_location = DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
