@@ -1,7 +1,7 @@
 # Made with python3
-# (C) @TeleRoidGroup
+# (C) @FayasNoushad
 # Copyright permission under GNU General Public License v3.0
-# All rights reserved by @TeleRoidGroup
+# All rights reserved by @FayasNoushad
 # License -> https://github.com/P-Phreak/Rename-Bot/blob/main/LICENSE
 
 import logging
@@ -52,7 +52,7 @@ if __name__ == "__main__" :
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
 
-TeleRoidGroup = Client(
+FayasNoushad = Client(
     "Rename Bot",
     bot_token=os.environ.get("TG_BOT_TOKEN", ""),
     api_id=int(os.environ.get("APP_ID", 12345)),
@@ -61,7 +61,7 @@ TeleRoidGroup = Client(
 
 
 
-@TeleRoidGroup.on_callback_query()
+@FayasNoushad.on_callback_query()
 async def cb_handler(bot, update):
 
     if update.data == "rename":
@@ -71,7 +71,7 @@ async def cb_handler(bot, update):
     if update.data == "cancel":
         await update.message.edit_text(text="<code>Process Cancelled</code>")
 
-@TeleRoidGroup.on_message(filters.command(["start"]))
+@FayasNoushad.on_message(filters.command(["start"]))
 async def start(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
@@ -81,7 +81,7 @@ async def start(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@TeleRoidGroup.on_message(filters.photo)
+@FayasNoushad.on_message(filters.photo)
 async def save_photo(bot, update):
     if update.media_group_id is not None:
         # album is sent
@@ -108,7 +108,7 @@ async def save_photo(bot, update):
             reply_to_message_id=update.message_id
         )
 
-@TeleRoidGroup.on_message(filters.command(["delthumb"]))
+@FayasNoushad.on_message(filters.command(["delthumb"]))
 async def delete_thumbnail(bot, update):
     thumb_image_path = DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
     #download_location = DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
@@ -127,7 +127,7 @@ async def delete_thumbnail(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@TeleRoidGroup.on_message(filters.command(["showthumb"]))
+@FayasNoushad.on_message(filters.command(["showthumb"]))
 async def show_thumb(bot, update):
     thumb_image_path = DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
     if not os.path.exists(thumb_image_path):
@@ -155,7 +155,7 @@ async def show_thumb(bot, update):
             reply_to_message_id=update.message_id
         )
 
-@TeleRoidGroup.on_message(filters.private & (filters.audio | filters.document | filters.animation | filters.video | filters.voice | filters.video_note))
+@FayasNoushad.on_message(filters.private & (filters.audio | filters.document | filters.animation | filters.video | filters.voice | filters.video_note))
 async def filter(bot, update):
     if update.from_user.id not in AUTH_USERS:
         if str(update.from_user.id) in ADL_BOT_RQ:
@@ -190,7 +190,7 @@ async def filter(bot, update):
         disable_web_page_preview=True
     )
 
-@TeleRoidGroup.on_message(filters.private & filters.reply & filters.text)
+@FayasNoushad.on_message(filters.private & filters.reply & filters.text)
 async def cus_name(bot, message):
     if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply):
         asyncio.create_task(rename(bot, message))
@@ -306,4 +306,4 @@ async def rename(bot, message):
 
 
 
-TeleRoidGroup.run()
+FayasNoushad.run()
